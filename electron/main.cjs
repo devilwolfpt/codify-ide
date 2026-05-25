@@ -8,6 +8,7 @@ const https = require("https");
 const os = require("os");
 const { WebSocketServer } = require("ws");
 const pty = require("node-pty");
+const { autoUpdater } = require("electron-updater");
 
 let mainWindow = null;
 let viteProcess = null;
@@ -1164,6 +1165,7 @@ ipcMain.handle("get-models-path", () => {
 app.whenReady().then(() => {
 	if (app.isPackaged) {
 		startPackagedServer().then(() => createWindow());
+		autoUpdater.checkForUpdatesAndNotify();
 	} else {
 		startVite();
 		createWindow();

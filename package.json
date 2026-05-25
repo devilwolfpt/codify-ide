@@ -25,6 +25,7 @@
 	"build": {
 		"appId": "com.codify.ide",
 		"productName": "Codify",
+		"publish": ["github"],
 		"directories": {
 			"output": "release-temp"
 		},
@@ -61,10 +62,16 @@
 			"installerHeaderIcon": "public/icon.ico"
 		},
 		"mac": {
-			"target": ["dmg", "zip"]
+			"target": [
+				"dmg",
+				"zip"
+			]
 		},
 		"linux": {
-			"target": ["deb", "tar.gz"]
+			"target": [
+				"deb",
+				"tar.gz"
+			]
 		},
 		"compression": "store",
 		"asar": true
@@ -75,6 +82,7 @@
 		"@monaco-editor/react": "^4.7.0",
 		"@types/eslint": "^9.6.1",
 		"@xterm/addon-fit": "^0.11.0",
+		"electron-updater": "^6.8.3",
 		"eslint": "^10.4.0",
 		"google-auth-library": "^10.6.2",
 		"lucide-react": "^0.511.0",
@@ -95,9 +103,9 @@
 		"@vitejs/plugin-react": "^4.4.1",
 		"electron": "^42.2.0",
 		"electron-builder": "^26.8.1",
+		"javascript-obfuscator": "^4.0.0",
 		"terser": "^5.47.1",
 		"typescript": "~5.8.3",
-		"vite": "^6.3.5",
-		"javascript-obfuscator": "^4.0.0"
+		"vite": "^6.3.5"
 	}
 }

@@ -1,0 +1,116 @@
+{
+	"name": "Codify-ide",
+	"private": true,
+	"version": "1.0.0",
+	"description": "Codify IDE",
+	"author": {
+		"name": "Google Deepmind",
+		"email": "hello@deepmind.com"
+	},
+	"homepage": "https://github.com/codify",
+	"type": "module",
+	"main": "electron/main.cjs",
+	"scripts": {
+		"dev": "node --max-old-space-size=4096 node_modules/vite/bin/vite.js",
+		"build": "tsc -b && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
+		"postbuild": "npm run obfuscate",
+		"obfuscate": "node ./scripts/obfuscate.cjs",
+		"preview": "node --max-old-space-size=4096 node_modules/vite/bin/vite.js preview",
+		"electron": "electron .",
+		"dist": "node ./scripts/cleanRelease.cjs && electron-builder --win --publish never",
+		"dist:dir": "node ./scripts/cleanRelease.cjs && electron-builder --win --dir --publish never",
+		"dist:mac": "node ./scripts/cleanRelease.cjs && electron-builder --mac --publish never",
+		"dist:linux": "node ./scripts/cleanRelease.cjs && electron-builder --linux --publish never"
+	},
+	"build": {
+		"appId": "com.codify.ide",
+		"productName": "Codify",
+		"directories": {
+			"output": "release-temp"
+		},
+		"files": [
+			"dist/**/*",
+			"electron/**/*",
+			"public/**/*",
+			"package.json",
+			"!node_modules/.cache",
+			"!node_modules/*/test/**",
+			"!node_modules/*/tests/**",
+			"!node_modules/*/.github/**",
+			"!release/**/*"
+		],
+		"extraFiles": [
+			{
+				"from": "models",
+				"to": ".",
+				"filter": [
+					"**/*"
+				]
+			}
+		],
+		"win": {
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"x64"
+					]
+				}
+			],
+			"icon": "public/icon.ico"
+		},
+		"nsis": {
+			"oneClick": false,
+			"allowToChangeInstallationDirectory": true,
+			"createDesktopShortcut": true,
+			"createStartMenuShortcut": true,
+			"shortcutName": "Codify",
+			"installerIcon": "public/icon.ico",
+			"uninstallerIcon": "public/icon.ico",
+			"installerHeaderIcon": "public/icon.ico"
+		},
+		"mac": {
+			"target": ["dmg", "zip"]
+		},
+		"linux": {
+			"target": ["deb", "tar.gz"]
+		},
+		"compression": "store",
+		"asar": true,
+		"asarUnpack": [
+			"models/**"
+		]
+	},
+	"dependencies": {
+		"@google-cloud/vertexai": "^1.12.0",
+		"@humanfs/memory": "^0.19.6",
+		"@monaco-editor/react": "^4.7.0",
+		"@types/eslint": "^9.6.1",
+		"@xterm/addon-fit": "^0.11.0",
+		"eslint": "^10.4.0",
+		"google-auth-library": "^10.6.2",
+		"lucide-react": "^0.511.0",
+		"node-llama-cpp": "^3.18.1",
+		"node-pty": "^1.1.0",
+		"pdf-parse": "^2.4.5",
+		"prettier": "^3.8.3",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"tesseract.js": "^7.0.0",
+		"ws": "^8.20.1",
+		"xterm": "^5.3.0"
+	},
+	"devDependencies": {
+		"@types/react": "^19.1.2",
+		"@types/react-dom": "^19.1.2",
+		"@types/ws": "^8.18.1",
+		"@vitejs/plugin-react": "^4.4.1",
+		"electron": "^42.2.0",
+		"electron-builder": "^26.8.1",
+		"terser": "^5.47.1",
+		"typescript": "~5.8.3",
+		"vite": "^6.3.5",
+		"javascript-obfuscator": "^4.0.0",
+		"keytar": "^8.0.0"
+	}
+}

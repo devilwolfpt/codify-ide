@@ -1,0 +1,12 @@
+npm run dev
+
+npm run dist
+
+Remove-Item -Recurse -Force release -ErrorAction SilentlyContinue; npm run dist
+
+
+
+
+npm run build
+npm run dist:dir
+

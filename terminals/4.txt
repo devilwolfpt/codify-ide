@@ -1,0 +1,96 @@
+---
+pid: 10216
+cwd: |
+  C:\Users\User\.cursor\projects\empty-window
+active_command: npm run dev
+last_command: |
+  Set-Location "C:\Users\User\.cursor\projects\empty-window"
+  npm install
+  npm run build
+last_exit_code: 0
+---
+      at C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13314:10)
+      at TypeScriptParserMixin.parseFunctionBody (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12117:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12103:10)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9189:18)
+      at C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13462:12
+      at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12420:14)
+      at TypeScriptParserMixin.parseFunction (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13461:10)
+11:38:44 [vite] Internal server error: C:\Users\User\.cursor\projects\empty-window\src\App.tsx: Expected corresponding JSX closing tag for <div>. (345:4)
+
+  343 |         onOpenFile={openFile}
+  344 |       />
+> 345 |     </motion>
+      |     ^
+  346 |   )
+  347 | }
+  348 |
+  Plugin: vite:react-babel
+  File: C:/Users/User/.cursor/projects/empty-window/src/App.tsx:345:4
+      at constructor (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4739:16)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13314:10)
+      at TypeScriptParserMixin.parseFunctionBody (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12117:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12103:10)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9189:18)
+      at C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13462:12
+      at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12420:14)
+      at TypeScriptParserMixin.parseFunction (C:\Users\User\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13461:10) (x2)
+11:38:47 [vite] (client) hmr update /src/App.tsx
+11:39:04 [vite] (client) hmr update /src/components/Sidebar.tsx
+11:39:07 [vite] (client) hmr update /src/App.css
+11:39:09 [vite] (client) hmr update /src/App.css (x2)
+11:39:12 [vite] (client) hmr update /src/App.css (x3)
+11:39:15 [vite] (client) hmr update /src/components/Sidebar.tsx
+11:39:20 [vite] (client) hmr update /src/App.css

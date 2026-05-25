@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Codify IDE</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<style>
+*{box-sizing:border-box;}
+body{background:#050507;color:white;font-family:'Plus Jakarta Sans',sans-serif;margin:0;}
+.gradient-text{background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);}
+.sc::-webkit-scrollbar{width:4px;height:4px;}
+.sc::-webkit-scrollbar-thumb{background:#3f3f46;border-radius:999px;}
+.hero-grid{background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px;}
+.glow{box-shadow:0 0 120px rgba(124,58,237,.25);}
+.card-hover{transition:.3s;}
+.card-hover:hover{transform:translateY(-6px);border-color:#7c3aed;}
+.mono{font-family:'JetBrains Mono',monospace;}
+
+/* ── CAROUSEL ── */
+.carousel-wrap{position:relative;overflow:hidden;width:100%;padding:0 0 40px 0;}
+.carousel-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);will-change:transform;}
+.carousel-slide{flex:0 0 74%;max-width:74%;padding:0 12px;transition:transform .5s, opacity .5s;}
+.carousel-slide img{width:100%;border-radius:24px;border:1px solid #27272a;display:block;object-fit:cover;height:480px;box-shadow:0 32px 80px rgba(0,0,0,.6);}
+.carousel-slide.active img{border-color:#7c3aed55;box-shadow:0 0 80px rgba(124,58,237,.3),0 32px 80px rgba(0,0,0,.6);}
+.carousel-slide.side{opacity:.45;transform:scale(.96);}
+.carousel-slide.active{opacity:1;transform:scale(1);}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:28px;}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:#3f3f46;border:none;cursor:pointer;transition:.3s;padding:0;}
+.carousel-dot.active{background:#7c3aed;width:24px;border-radius:4px;}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-60%);z-index:10;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid #3f3f46;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);transition:.2s;}
+.carousel-btn:hover{background:rgba(124,58,237,.3);border-color:#7c3aed;}
+.carousel-btn.prev{left:12px;}
+.carousel-btn.next{right:12px;}
+</style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 border-b border-zinc-900 bg-[#050507]/80 backdrop-blur-xl">
+<nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3 font-bold text-xl">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center">
+<i class="ph-fill ph-code text-white text-lg"></i>
+</div>
+<span class="gradient-text">Codify</span>
+</div>
+<div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+<a href="#interface" class="hover:text-white transition">Interface</a>
+<a href="#features" class="hover:text-white transition">Features</a>
+<a href="#performance" class="hover:text-white transition">Performance</a>
+<a href="#ai" class="hover:text-white transition">Neuria AI</a>
+<a href="#downloads" class="hover:text-white transition">Downloads</a>
+</div>
+</nav>
+</header>
+
+<main class="pt-28">
+
+<!-- HERO -->
+<section class="relative overflow-hidden hero-grid">
+<div class="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-violet-600/20 blur-[120px]"></div>
+<div class="max-w-7xl mx-auto px-6 py-28 relative z-10">
+  <div class="text-center max-w-4xl mx-auto">
+    <div class="inline-flex items-center gap-2 border border-violet-500/30 bg-violet-500/10 rounded-full px-4 py-2 text-sm text-violet-300 mb-8">
+      <i class="ph-fill ph-lightning"></i>IDE de Nova Geração
+    </div>
+    <h1 class="text-6xl md:text-7xl font-extrabold leading-tight mb-8">
+      O IDE criado para<br><span class="gradient-text">Agentes de IA</span>
+    </h1>
+    <p class="text-zinc-400 text-xl leading-relaxed mb-12">
+      Programação ultra rápida com IA local, automação avançada,<br>processamento paralelo e uma interface inspirada no VS Code.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <button class="px-8 py-4 rounded-2xl bg-white text-black font-bold hover:scale-105 transition">Download Brevemente</button>
+      <button class="px-8 py-4 rounded-2xl border border-zinc-700 hover:border-violet-500 transition">Ver Arquitetura</button>
+    </div>
+  </div>
+
+  <!-- CAROUSEL -->
+  <div class="mt-24 relative">
+    <div class="carousel-wrap">
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)"><i class="ph-bold ph-caret-left"></i></button>
+      <button class="carousel-btn next" onclick="moveCarousel(1)"><i class="ph-bold ph-caret-right"></i></button>
+
+      <!-- outer clip so side slides peek -->
+      <div style="overflow:visible;display:flex;justify-content:center;">
+        <div class="carousel-track" id="carouselTrack" style="width:100%;">
+          <!-- slide 0 -->
+          <div class="carousel-slide side" id="slide-0">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop" alt="IDE screenshot 1">
+          </div>
+          <!-- slide 1 (active) -->
+          <div class="carousel-slide active" id="slide-1">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop" alt="IDE screenshot 2">
+          </div>
+          <!-- slide 2 -->
+          <div class="carousel-slide side" id="slide-2">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1400&auto=format&fit=crop" alt="IDE screenshot 3">
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-dots">
+        <button class="carousel-dot" id="dot-0" onclick="goToSlide(0)"></button>
+        <button class="carousel-dot active" id="dot-1" onclick="goToSlide(1)"></button>
+        <button class="carousel-dot" id="dot-2" onclick="goToSlide(2)"></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- IDE SECTION -->
+<section id="interface" class="py-32">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-5xl font-bold mb-6">Interface Ultra Moderna</h2>
+<p class="text-zinc-400 text-lg max-w-3xl mx-auto">Editor inspirado no VS Code com sistema modular, painéis inteligentes e integração total com IA.</p>
+</div>
+
+<!-- IDE MOCKUP -->
+<div class="rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl" style="background:#111113;">
+
+  <!-- TOPBAR -->
+  <div style="height:48px;background:#0d0d10;border-bottom:1px solid #27272a;display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#3b82f6);display:flex;align-items:center;justify-content:center;">
+        <i class="ph-fill ph-code" style="color:white;font-size:13px;"></i>
+      </div>
+      <span style="color:white;font-weight:700;font-size:14px;">Codify</span>
+      <span style="color:#71717a;font-size:14px;margin-left:2px;">File</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button style="background:none;border:none;color:#71717a;cursor:pointer;padding:4px 6px;border-radius:6px;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-caret-left" style="font-size:13px;"></i></button>
+      <button style="background:none;border:none;color:#71717a;cursor:pointer;padding:4px 6px;border-radius:6px;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-caret-right" style="font-size:13px;"></i></button>
+      <button style="background:none;border:1px solid #3f3f46;border-radius:10px;color:#d4d4d8;font-size:13px;padding:4px 14px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='#3f3f46'">Open in Agents</button>
+      <button style="background:none;border:none;color:#71717a;cursor:pointer;padding:4px 6px;border-radius:6px;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-grid-four" style="font-size:14px;"></i></button>
+      <button style="background:none;border:none;color:#71717a;cursor:pointer;padding:4px 6px;border-radius:6px;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-layout" style="font-size:14px;"></i></button>
+    </div>
+    <div style="display:flex;align-items:center;gap:2px;">
+      <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-minus" style="font-size:13px;"></i></button>
+      <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-square" style="font-size:11px;"></i></button>
+      <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#cc0000';this.style.color='white'" onmouseout="this.style.background='none';this.style.color='#71717a'"><i class="ph-bold ph-x" style="font-size:13px;"></i></button>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div style="display:flex;height:680px;">
+
+    <!-- ACTIVITY BAR -->
+    <div style="width:48px;background:#0d0d10;border-right:1px solid #27272a;display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:18px;flex-shrink:0;">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;">
+        <i class="ph-fill ph-squares-four" style="color:#a78bfa;font-size:18px;"></i>
+      </div>
+      <i class="ph-bold ph-user-circle" style="color:#52525b;font-size:20px;cursor:pointer;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+      <i class="ph-bold ph-clock-counter-clockwise" style="color:#52525b;font-size:20px;cursor:pointer;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+      <i class="ph-bold ph-stack" style="color:#52525b;font-size:20px;cursor:pointer;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+      <i class="ph-bold ph-cube" style="color:#52525b;font-size:20px;cursor:pointer;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+      <i class="ph-bold ph-lock" style="color:#52525b;font-size:20px;cursor:pointer;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+      <i class="ph-bold ph-database" style="color:#52525b;font-size:20px;cursor:pointer;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+      <i class="ph-bold ph-puzzle-piece" style="color:#52525b;font-size:20px;cursor:pointer;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+      <div style="flex:1;"></div>
+      <i class="ph-bold ph-plus" style="color:#52525b;font-size:20px;cursor:pointer;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+    </div>
+
+    <!-- AGENT PANEL -->
+    <div style="width:520px;background:#13131a;border-right:1px solid #27272a;display:flex;flex-direction:column;flex-shrink:0;">
+      <div style="padding:14px 18px;border-bottom:1px solid #27272a;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:10px;background:rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;">
+            <i class="ph-fill ph-squares-four" style="color:#a78bfa;font-size:16px;"></i>
+          </div>
+          <span style="font-weight:700;font-size:17px;color:white;">Agent</span>
+        </div>
+        <i class="ph-bold ph-dots-three" style="color:#52525b;font-size:20px;cursor:pointer;"></i>
+      </div>
+
+      <div class="sc" style="flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <p style="font-size:14px;color:#e4e4e7;margin:0 0 8px 0;"><span style="font-weight:700;color:#f87171;">Erro da Neuria:</span> <span style="color:#71717a;">Failed to fetch</span></p>
+          <p style="font-size:13px;color:#71717a;line-height:1.6;margin:0;font-style:italic;">Certifica-te de que os ficheiros do modelo (como neuria-v1.ian ou qwen2.5-coder-1.5b-q4_k_m.gguf) estão localizados na pasta do projeto e que o servidor local está a correr.</p>
+        </div>
+        <div style="background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:13px;line-height:1.65;color:white;">
+          Por favor, corrige o seguinte erro no ficheiro 'src/App.tsx' na linha 23, coluna 14: Mensagem: 'useState' is defined but never used. Código a corrigir: <code style="background:rgba(0,0,0,0.25);border-radius:4px;padding:1px 4px;font-family:'JetBrains Mono',monospace;font-size:12px;">```tsx const [activeFile, setActiveFile] = useState(null); ```</code> Identificador da regra: eslint(no-unused-vars)
+        </div>
+        <div>
+          <p style="font-size:14px;color:#e4e4e7;margin:0 0 8px 0;"><span style="font-weight:700;color:#f87171;">Erro da Neuria:</span> <span style="color:#71717a;">Failed to fetch</span></p>
+          <p style="font-size:13px;color:#71717a;line-height:1.6;margin:0;font-style:italic;">Certifica-te de que os ficheiros do modelo (como neuria-v1.ian ou qwen2.5-coder-1.5b-q4_k_m.gguf) estão localizados na pasta do projeto e que o servidor local está a correr.</p>
+        </div>
+        <div style="background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:13px;line-height:1.65;color:white;overflow:hidden;max-height:50px;">
+          Explica o código completo deste ficheiro: <code style="font-family:'JetBrains Mono',monospace;font-size:12px;">```tsx...</code>
+        </div>
+      </div>
+
+      <div style="padding:10px 14px 0 14px;border-top:1px solid #27272a;">
+        <div style="background:#0f0f14;border:1px solid #3f3f46;border-radius:14px;padding:12px 14px;">
+          <div style="color:#52525b;font-size:13px;margin-bottom:12px;">Make, test, iterate...</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <button style="background:none;border:none;color:#71717a;cursor:pointer;width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-plus" style="font-size:15px;"></i></button>
+              <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;color:#71717a;">
+                <div style="width:15px;height:15px;border:1.5px solid #52525b;border-radius:4px;flex-shrink:0;"></div>Plan
+              </label>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <button style="background:#7c3aed;border:none;border-radius:10px;color:white;font-size:13px;padding:6px 14px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;" onmouseover="this.style.background='#6d28d9'" onmouseout="this.style.background='#7c3aed'">
+                <i class="ph-fill ph-squares-four" style="font-size:12px;"></i>Auto<i class="ph-bold ph-caret-down" style="font-size:11px;"></i>
+              </button>
+              <button style="background:#27272a;border:none;border-radius:8px;color:#a1a1aa;cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#3f3f46'" onmouseout="this.style.background='#27272a'"><i class="ph-bold ph-arrow-up" style="font-size:14px;"></i></button>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0 10px 0;">
+          <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-play" style="font-size:15px;"></i></button>
+          <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-monitor" style="font-size:15px;"></i></button>
+          <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-grid-four" style="font-size:15px;"></i></button>
+          <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-globe" style="font-size:15px;"></i></button>
+          <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-terminal-window" style="font-size:15px;"></i></button>
+          <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-list-bullets" style="font-size:15px;"></i></button>
+          <button style="background:none;border:none;color:#71717a;cursor:pointer;width:32px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#ffffff10'" onmouseout="this.style.background='none'"><i class="ph-bold ph-sidebar-simple" style="font-size:15px;"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CODE EDITOR -->
+    <div style="flex:1;display:flex;flex-direction:column;background:#1e1e1e;min-width:0;">
+      <div style="height:40px;background:#16161c;border-bottom:1px solid #27272a;display:flex;align-items:flex-end;">
+        <div style="height:100%;padding:0 18px;display:flex;align-items:center;gap:10px;border-top:2px solid #7c3aed;background:#1e1e1e;color:white;font-size:13px;font-family:'JetBrains Mono',monospace;">
+          main.py<i class="ph-bold ph-x" style="color:#52525b;font-size:11px;cursor:pointer;margin-left:4px;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"></i>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;overflow:hidden;">
+        <div class="sc mono" style="width:48px;background:#1b1b1f;color:#4b5563;font-size:13px;line-height:26px;text-align:right;padding:14px 10px 14px 0;user-select:none;flex-shrink:0;overflow:hidden;">
+          1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23
+        </div>
+        <div class="sc mono" style="flex:1;overflow:auto;padding:14px 20px;font-size:13px;line-height:26px;white-space:pre;color:#d4d4d4;">
+<span style="color:#569cd6;">import</span> random
+
+<span style="color:#569cd6;">def</span> <span style="color:#dcdcaa;">jogar</span>():
+    <span style="color:#dcdcaa;">print</span>(<span style="color:#ce9178;">"Bem-vindo ao Jogo de Adivinhação!"</span>)
+    numero_secreto = random.<span style="color:#dcdcaa;">randint</span>(<span style="color:#b5cea8;">1</span>, <span style="color:#b5cea8;">100</span>)
+    tentativas = <span style="color:#b5cea8;">0</span>
+
+    <span style="color:#569cd6;">while</span> <span style="color:#569cd6;">True</span>:
+        tentativa = <span style="color:#4ec9b0;">int</span>(<span style="color:#dcdcaa;">input</span>(<span style="color:#ce9178;">"Digite um número entre 1 e 100: "</span>))
+        tentativas += <span style="color:#b5cea8;">1</span>
+
+        <span style="color:#569cd6;">if</span> tentativa &lt; numero_secreto:
+            <span style="color:#dcdcaa;">print</span>(<span style="color:#ce9178;">"Tente um número maior."</span>)
+        <span style="color:#569cd6;">elif</span> tentativa &gt; numero_secreto:
+            <span style="color:#dcdcaa;">print</span>(<span style="color:#ce9178;">"Tente um número menor."</span>)
+        <span style="color:#569cd6;">else</span>:
+            <span style="color:#dcdcaa;">print</span>(<span style="color:#ce9178;">f"Parabéns! Você acertou o número em <span style="color:#d4d4d4;">{tentativas}</span> tentativas."</span>)
+            <span style="color:#569cd6;">break</span>
+
+<span style="color:#569cd6;">if</span> __name__ == <span style="color:#ce9178;">"__main__"</span>:
+    <span style="color:#dcdcaa;">jogar</span>()
+
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE EXPLORER -->
+    <div style="width:240px;background:#18181d;border-left:1px solid #27272a;display:flex;flex-direction:column;flex-shrink:0;">
+      <div style="height:40px;border-bottom:1px solid #27272a;display:flex;align-items:center;justify-content:space-between;padding:0 12px;">
+        <span style="font-size:11px;letter-spacing:.08em;color:#52525b;font-weight:700;text-transform:uppercase;">Explorador</span>
+        <div style="display:flex;gap:4px;">
+          <button style="background:none;border:none;color:#52525b;cursor:pointer;width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"><i class="ph-bold ph-folder-plus" style="font-size:14px;"></i></button>
+          <button style="background:none;border:none;color:#52525b;cursor:pointer;width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"><i class="ph-bold ph-file-plus" style="font-size:14px;"></i></button>
+          <button style="background:none;border:none;color:#52525b;cursor:pointer;width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#52525b'"><i class="ph-bold ph-dots-three" style="font-size:14px;"></i></button>
+        </div>
+      </div>
+      <div class="sc" style="flex:1;overflow-y:auto;padding:6px 0;font-size:13px;">
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px;color:#52525b;"><i class="ph-bold ph-caret-right" style="font-size:10px;"></i><i class="ph-fill ph-folder" style="color:#facc15;font-size:14px;"></i><span>...</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>agent-transcri...</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 26px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>4645b4b5-9...</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 40px;color:#a1a1aa;"><i class="ph-bold ph-caret-right" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder" style="color:#facc15;font-size:14px;"></i><span>subagents</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>caminho</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 26px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>relativo</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 40px;color:#a1a1aa;"><i class="ph-bold ph-caret-right" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder" style="color:#facc15;font-size:14px;"></i><span>pasta</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px;color:#a1a1aa;"><i class="ph-bold ph-caret-right" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder" style="color:#facc15;font-size:14px;"></i><span>canvases</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px;color:#a1a1aa;"><i class="ph-bold ph-caret-right" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder" style="color:#facc15;font-size:14px;"></i><span>electron</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>empty-window</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 26px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>game</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 40px;color:#a1a1aa;"><span style="color:#71717a;font-size:13px;font-family:'JetBrains Mono',monospace;">›_</span><span>main.py</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 26px;color:#a1a1aa;"><i class="ph-bold ph-caret-right" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder" style="color:#facc15;font-size:14px;"></i><span>mcps</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 26px;color:#a1a1aa;"><i class="ph-bold ph-caret-right" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder" style="color:#facc15;font-size:14px;"></i><span>cursor-ide...</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>game</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:4px 12px 4px 26px;background:rgba(124,58,237,0.3);color:#c4b5fd;border-radius:4px;margin:0 4px;">
+          <span style="font-size:13px;font-family:'JetBrains Mono',monospace;color:#a78bfa;">›_</span><span style="font-weight:500;">main.py</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>mcps</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 26px;color:#a1a1aa;"><i class="ph-bold ph-caret-down" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder-open" style="color:#facc15;font-size:14px;"></i><span>cursor-app-...</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 40px;color:#a1a1aa;"><i class="ph-bold ph-caret-right" style="font-size:10px;color:#71717a;"></i><i class="ph-fill ph-folder" style="color:#facc15;font-size:14px;"></i><span>tools</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 40px;color:#a1a1aa;"><i class="ph-bold ph-file-text" style="color:#60a5fa;font-size:14px;"></i><span>INSTRUCT...</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:3px 12px 3px 40px;color:#a1a1aa;"><i class="ph-bold ph-file-text" style="color:#60a5fa;font-size:14px;"></i><span>SERVER_...</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- END IDE MOCKUP -->
+
+</div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="py-32 border-t border-zinc-900">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-20">
+<h2 class="text-5xl font-bold mb-6">Features Inteligentes</h2>
+<p class="text-zinc-400 text-lg">Tudo otimizado para desenvolvimento moderno.</p>
+</div>
+<div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+<div class="glass border border-zinc-800 rounded-3xl p-8 card-hover"><i class="ph-fill ph-lightning text-5xl text-violet-400 mb-6"></i><h3 class="font-bold text-2xl mb-4">Ultra Rápido</h3><p class="text-zinc-400 leading-relaxed">Motor otimizado para projetos gigantes.</p></div>
+<div class="glass border border-zinc-800 rounded-3xl p-8 card-hover"><i class="ph-fill ph-shield-check text-5xl text-blue-400 mb-6"></i><h3 class="font-bold text-2xl mb-4">Privacidade</h3><p class="text-zinc-400 leading-relaxed">A IA corre localmente sem cloud.</p></div>
+<div class="glass border border-zinc-800 rounded-3xl p-8 card-hover"><i class="ph-fill ph-cpu text-5xl text-pink-400 mb-6"></i><h3 class="font-bold text-2xl mb-4">GPU Rendering</h3><p class="text-zinc-400 leading-relaxed">Renderização acelerada por hardware.</p></div>
+<div class="glass border border-zinc-800 rounded-3xl p-8 card-hover"><i class="ph-fill ph-brain text-5xl text-cyan-400 mb-6"></i><h3 class="font-bold text-2xl mb-4">Neuria AI</h3><p class="text-zinc-400 leading-relaxed">Análise automática e geração de código.</p></div>
+</div>
+</div>
+</section>
+
+<!-- PERFORMANCE -->
+<section id="performance" class="py-32">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-5xl font-bold mb-8">Performance<br>de Outro Nível</h2>
+<p class="text-zinc-400 text-lg leading-relaxed mb-8">O Codify foi criado para trabalhar com projetos enormes sem comprometer a fluidez da interface.</p>
+<div class="space-y-5">
+<div class="flex items-center gap-4"><i class="ph-fill ph-check-circle text-violet-400 text-2xl"></i><span>Processamento paralelo</span></div>
+<div class="flex items-center gap-4"><i class="ph-fill ph-check-circle text-violet-400 text-2xl"></i><span>Compilação otimizada</span></div>
+<div class="flex items-center gap-4"><i class="ph-fill ph-check-circle text-violet-400 text-2xl"></i><span>Arquitetura escalável</span></div>
+</div>
+</div>
+<div class="rounded-3xl overflow-hidden border border-zinc-800">
+<img src="https://media.giphy.com/media/coxQHKASG60HrHtvkt/giphy.gif" class="w-full h-full object-cover">
+</div>
+</div>
+</div>
+</section>
+
+<!-- AI -->
+<section id="ai" class="py-32 border-t border-zinc-900">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="rounded-3xl overflow-hidden border border-zinc-800 order-2 lg:order-1">
+<img src="https://media.giphy.com/media/f3iwJFOVOwuy7K6FFw/giphy.gif" class="w-full h-full object-cover">
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="text-5xl font-bold mb-8">Neuria AI</h2>
+<p class="text-zinc-400 text-lg leading-relaxed mb-8">Uma IA local desenhada para desenvolvimento avançado, debugging inteligente e automação completa.</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="glass border border-zinc-800 rounded-2xl p-6"><i class="ph-fill ph-lock-key text-4xl text-violet-400 mb-4"></i><h4 class="font-bold text-xl mb-2">Seguro</h4><p class="text-zinc-400 text-sm">Tudo processado localmente.</p></div>
+<div class="glass border border-zinc-800 rounded-2xl p-6"><i class="ph-fill ph-lightning text-4xl text-blue-400 mb-4"></i><h4 class="font-bold text-xl mb-2">Instantâneo</h4><p class="text-zinc-400 text-sm">Respostas ultra rápidas.</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="py-32">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-5xl font-bold mb-6">Galeria do Sistema</h2>
+<p class="text-zinc-400 text-lg">Visual moderno inspirado nas melhores IDEs.</p>
+</div>
+<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" class="rounded-3xl border border-zinc-800 h-[280px] object-cover w-full">
+<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop" class="rounded-3xl border border-zinc-800 h-[280px] object-cover w-full">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" class="rounded-3xl border border-zinc-800 h-[280px] object-cover w-full">
+</div>
+</div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="downloads" class="py-32 border-t border-zinc-900">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<h2 class="text-5xl font-bold mb-6">Disponível Brevemente</h2>
+<p class="text-zinc-400 text-lg mb-16">Windows, macOS e Linux.</p>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass border border-zinc-800 rounded-3xl p-10 card-hover"><i class="ph-fill ph-windows-logo text-6xl mb-6"></i><h3 class="font-bold text-2xl mb-3">Windows</h3><p class="text-zinc-500 mb-8">x64 / ARM64</p><button class="w-full py-4 rounded-2xl border border-zinc-700 text-zinc-400">Em breve</button></div>
+<div class="glass border border-zinc-800 rounded-3xl p-10 card-hover"><i class="ph-fill ph-apple-logo text-6xl mb-6"></i><h3 class="font-bold text-2xl mb-3">macOS</h3><p class="text-zinc-500 mb-8">Apple Silicon</p><button class="w-full py-4 rounded-2xl border border-zinc-700 text-zinc-400">Em breve</button></div>
+<div class="glass border border-zinc-800 rounded-3xl p-10 card-hover"><i class="ph-fill ph-linux-logo text-6xl mb-6"></i><h3 class="font-bold text-2xl mb-3">Linux</h3><p class="text-zinc-500 mb-8">.deb / AppImage</p><button class="w-full py-4 rounded-2xl border border-zinc-700 text-zinc-400">Em breve</button></div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="border-t border-zinc-900 py-10 text-center text-zinc-600">
+© 2026 Codify IDE — Criado por Devilwolf
+</footer>
+
+<script>
+// ── Carousel logic ──────────────────────────────────────────
+const slides = document.querySelectorAll('.carousel-slide');
+const dots   = document.querySelectorAll('.carousel-dot');
+let current  = 1; // start at center
+const total  = slides.length;
+
+function goToSlide(idx) {
+  // clamp
+  idx = Math.max(0, Math.min(total - 1, idx));
+  // update classes
+  slides.forEach((s, i) => {
+    s.classList.remove('active', 'side');
+    s.classList.add(i === idx ? 'active' : 'side');
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+
+  // shift track so active is centred
+  // each slide is 74% wide + 24px gap (2×12px padding)
+  // offset = -(idx * slideWidth) + centreOffset
+  const track = document.getElementById('carouselTrack');
+  const wrap  = track.parentElement;
+  const wrapW = wrap.offsetWidth;
+  const slideW = track.children[0].offsetWidth;
+  const offset = (wrapW / 2) - (slideW / 2) - (idx * slideW);
+  track.style.transform = `translateX(${offset}px)`;
+  current = idx;
+}
+
+function moveCarousel(dir) { goToSlide(current + dir); }
+
+// init position after fonts load
+window.addEventListener('load', () => goToSlide(1));
+window.addEventListener('resize', () => goToSlide(current));
+</script>
+</body>
+</html>

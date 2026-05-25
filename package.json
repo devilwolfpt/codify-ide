@@ -98,7 +98,6 @@
 		"terser": "^5.47.1",
 		"typescript": "~5.8.3",
 		"vite": "^6.3.5",
-		"javascript-obfuscator": "^4.0.0",
-		"keytar": "^8.0.0"
+		"javascript-obfuscator": "^4.0.0"
 	}
 }

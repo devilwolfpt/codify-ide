@@ -13,7 +13,7 @@ export function AgentLogo({
 	const showSVG = error || variant === "icon";
 	const src =
 		variant === "filled"
-			? "/Codify logo cizento.png"
+			? "/logo-cizento.png"
 			: "/logo-transparent.png";
 
 	if (showSVG) {

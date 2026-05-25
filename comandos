@@ -10,3 +10,10 @@ Remove-Item -Recurse -Force release -ErrorAction SilentlyContinue; npm run dist
 npm run build
 npm run dist:dir
 
+
+
+
+git add .
+git commit -m "Adicionei a funcionalidade X"
+git push
+

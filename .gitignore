@@ -12,6 +12,7 @@ Windows/
 *.exe
 
 *.ian
+*.gguf
 .extensions/
 uploads/
 *.traineddata

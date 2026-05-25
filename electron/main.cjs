@@ -229,6 +229,12 @@ function getBestLocalModelPath() {
 		path.join(process.cwd(), "neuria-v1.ian"),
 	];
 
+	if (app.isPackaged) {
+		const exeDir = path.dirname(app.getPath("exe"));
+		candidates.push(path.join(exeDir, "neuria-v1.ian"));
+		candidates.push(path.join(exeDir, "qwen2.5-coder-1.5b-q4_k_m.gguf"));
+	}
+
 	for (const modelPath of candidates) {
 		if (!fs.existsSync(modelPath)) continue;
 		const stats = fs.statSync(modelPath);

@@ -39,15 +39,6 @@
 			"!node_modules/*/.github/**",
 			"!release/**/*"
 		],
-		"extraFiles": [
-			{
-				"from": "models",
-				"to": ".",
-				"filter": [
-					"**/*"
-				]
-			}
-		],
 		"win": {
 			"target": [
 				{
@@ -76,10 +67,7 @@
 			"target": ["deb", "tar.gz"]
 		},
 		"compression": "store",
-		"asar": true,
-		"asarUnpack": [
-			"models/**"
-		]
+		"asar": true
 	},
 	"dependencies": {
 		"@google-cloud/vertexai": "^1.12.0",
